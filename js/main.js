@@ -66,3 +66,79 @@ item.style.display="none";
 });
 
 });
+
+
+/* ==========================
+        LIGHTBOX
+========================== */
+
+const gallery=document.querySelectorAll(".portfolio-item img");
+
+const lightbox=document.getElementById("lightbox");
+
+const lightboxImg=document.getElementById("lightbox-img");
+
+const close=document.querySelector(".close-lightbox");
+
+gallery.forEach(img=>{
+
+img.onclick=()=>{
+
+lightbox.style.display="flex";
+
+lightboxImg.src=img.src;
+
+}
+
+});
+
+close.onclick=()=>{
+
+lightbox.style.display="none";
+
+}
+
+lightbox.onclick=(e)=>{
+
+if(e.target===lightbox){
+
+lightbox.style.display="none";
+
+}
+
+}
+
+
+/* ==========================
+        COUNTERS
+========================== */
+
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.dataset.target;
+
+const current=+counter.innerText;
+
+const increment=target/100;
+
+if(current<target){
+
+counter.innerText=Math.ceil(current+increment);
+
+setTimeout(update,20);
+
+}else{
+
+counter.innerText=target+"+";
+
+}
+
+}
+
+update();
+
+});
